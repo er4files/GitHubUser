@@ -27,7 +27,9 @@ class DetailUserActivity : AppCompatActivity() {
         bundle.putString(EXTRA_USERNAME, username)
 
         if (username != null) {
-            viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(DetailUserViewModel::class.java)
+            viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(
+                DetailUserViewModel::class.java
+            )
 
             // Menambahkan ProgressBar ke layout
             val progressBar = binding.progressBar

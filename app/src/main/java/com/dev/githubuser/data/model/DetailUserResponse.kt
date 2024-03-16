@@ -1,7 +1,7 @@
 package com.dev.githubuser.data.model
 
 data class DetailUserResponse(
-    val login : String,
+    val login: String,
     val id: Int,
     val avatar_url: String,
     val followers_url: String,

@@ -13,7 +13,7 @@ interface Api {
     @GET("search/users")
     @Headers("Authorization: token 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")
     fun getSearchUsers(
-        @Query("q") query:String
+        @Query("q") query: String
     ): Call<UserResponse>
 
     @GET("users/{username}")

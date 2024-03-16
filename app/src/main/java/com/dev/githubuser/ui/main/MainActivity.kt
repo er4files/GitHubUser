@@ -13,7 +13,7 @@ import com.dev.githubuser.databinding.ActivityMainBinding
 import com.dev.githubuser.ui.detail.DetailUserActivity
 
 class MainActivity : AppCompatActivity() {
-    private  lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
     private lateinit var viewModel: MainViewModel
     private lateinit var adapter: UserAdapter
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         adapter = UserAdapter()
         adapter.notifyDataSetChanged()
-        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback{
+        adapter.setOnItemClickCallback(object : UserAdapter.OnItemClickCallback {
             override fun onItemClicked(data: User) {
                 Intent(this@MainActivity, DetailUserActivity::class.java).also {
                     it.putExtra(DetailUserActivity.EXTRA_USERNAME, data.login)
@@ -35,7 +35,10 @@ class MainActivity : AppCompatActivity() {
 
         })
 
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(MainViewModel::class.java)
 
         binding.apply {
             rvUser.layoutManager = LinearLayoutManager(this@MainActivity)
@@ -46,7 +49,7 @@ class MainActivity : AppCompatActivity() {
                 searchUser()
             }
             etQuery.setOnKeyListener { v, keyCode, event ->
-                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER ){
+                if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
                     searchUser()
                     return@setOnKeyListener true
                 }
@@ -54,14 +57,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
         viewModel.getSearchUsers().observe(this, {
-            if (it!=null){
+            if (it != null) {
                 adapter.setList(it)
                 showLoading(false)
             }
         })
     }
 
-    private fun searchUser(){
+    private fun searchUser() {
         binding.apply {
             val query = etQuery.text.toString()
             if (query.isEmpty()) return
@@ -70,11 +73,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun showLoading(state: Boolean){
-        if (state){
+    private fun showLoading(state: Boolean) {
+        if (state) {
             binding.progressBar.visibility = View.VISIBLE
-        }else{
-            binding.progressBar.visibility =  View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 }

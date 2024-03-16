@@ -10,23 +10,24 @@ import com.dev.githubuser.databinding.ItemUserBinding
 
 class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
-    private  val list = ArrayList<User>()
+    private val list = ArrayList<User>()
 
-    private var onItemClickCallback:OnItemClickCallback? = null
+    private var onItemClickCallback: OnItemClickCallback? = null
 
-    fun setOnItemClickCallback (onItemClickCallback: OnItemClickCallback){
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
         this.onItemClickCallback = onItemClickCallback
     }
 
-    fun setList(users: ArrayList<User>){
+    fun setList(users: ArrayList<User>) {
         list.clear()
         list.addAll(users)
         notifyDataSetChanged()
     }
 
-    inner class UserViewHolder(val binding: ItemUserBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(user: User){
-            binding.root.setOnClickListener{
+    inner class UserViewHolder(val binding: ItemUserBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(user: User) {
+            binding.root.setOnClickListener {
                 onItemClickCallback?.onItemClicked(user)
             }
             binding.apply {
@@ -52,7 +53,7 @@ class UserAdapter : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
         holder.bind(list[position])
     }
 
-    interface OnItemClickCallback{
-        fun onItemClicked(data:User)
+    interface OnItemClickCallback {
+        fun onItemClicked(data: User)
     }
 }

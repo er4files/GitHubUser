@@ -15,7 +15,7 @@ class FollowingFragment : Fragment(R.layout.fragment_follow) {
     private val binding get() = _binding!!
     private lateinit var viewModel: FollowingViewModel
     private lateinit var adapter: UserAdapter
-    private lateinit var username:String
+    private lateinit var username: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -36,20 +36,24 @@ class FollowingFragment : Fragment(R.layout.fragment_follow) {
         }
 
         showLoading(true)
-        viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(FollowingViewModel::class.java)
+        viewModel = ViewModelProvider(
+            this,
+            ViewModelProvider.NewInstanceFactory()
+        ).get(FollowingViewModel::class.java)
         viewModel.setListFollowing(username)
         viewModel.getListFollowing().observe(viewLifecycleOwner, {
-            if(it!=null){
+            if (it != null) {
                 adapter.setList(it)
                 showLoading(false)
             }
         })
     }
-    private fun showLoading(state: Boolean){
-        if (state){
+
+    private fun showLoading(state: Boolean) {
+        if (state) {
             binding.progressBar.visibility = View.VISIBLE
-        }else{
-            binding.progressBar.visibility =  View.GONE
+        } else {
+            binding.progressBar.visibility = View.GONE
         }
     }
 
