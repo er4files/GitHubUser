@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "GitHubUser"
 include(":app")
+include(":consumerapp")

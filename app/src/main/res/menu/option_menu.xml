@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/favorite_menu"
+        android:icon="@drawable/ic_heart_white"
+        android:title="Favorite"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_setting"
+        android:title="Settings Menu"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/setting_menu"
+                android:title="Setting"
+                app:showAsAction="always" />
+                <item
+                    android:id="@+id/light_theme"
+                    android:title="Light Theme"
+                    app:showAsAction="never"
+                    android:visible="false" />
+
+                <item
+                    android:id="@+id/dark_theme"
+                    android:title="Dark Theme"
+                    app:showAsAction="never"
+                    android:visible="true" />
+        </menu>
+    </item>
+</menu>
